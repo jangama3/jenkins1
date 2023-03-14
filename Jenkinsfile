@@ -7,7 +7,7 @@ pipeline {
       }
     }
 
-    stage('log') {
+    stage('test') {
       parallel {
         stage('log') {
           steps {
@@ -21,6 +21,12 @@ pipeline {
           }
         }
 
+      }
+    }
+
+    stage('build') {
+      steps {
+        sh 'docker build -f curriculum-front/Dockerfile .'
       }
     }
 
